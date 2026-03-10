@@ -12,7 +12,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout currentPageName="Home"><Home /></Layout>} />
-        <Route path="/Home" element={<Layout currentPageName="Home"><Home /></Layout>} />
         <Route path="/TheIssue" element={<Layout currentPageName="TheIssue"><TheIssue /></Layout>} />
         <Route path="/Quiz" element={<Layout currentPageName="Quiz"><Quiz /></Layout>} />
         <Route path="/HowToHelp" element={<Layout currentPageName="HowToHelp"><HowToHelp /></Layout>} />
