@@ -1,6 +1,7 @@
 # InfoShield
 
 A media literacy website for Australians to learn about misinformation.
+Also, thanks to SahasTechnologies (Sahas Shimpi) for connecting my repository to vercel because my account was encountering some troubles.
 
 ## Setup
 
