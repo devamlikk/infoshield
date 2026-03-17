@@ -22,6 +22,7 @@ export default function Home() {
         </h2>
         <p className="text-gray-400 mb-10 max-w-xl mx-auto">
           Share InfoShield with friends and family. Together, we can build a more informed community.
+          Our goal is to raise awareness in our society about fake news and misinformation so everyone can make clearer, more confident decisions.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-10">
           <Link

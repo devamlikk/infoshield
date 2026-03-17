@@ -49,6 +49,14 @@ export default function Contact() {
           <p className="text-gray-400 text-lg">
             Have a question, suggestion, or want to report misinformation? We'd love to hear from you.
           </p>
+
+          <div className="mt-10 text-left">
+            <h2 className="text-orange-500 font-heading font-bold text-2xl mb-2">About Us</h2>
+            <p className="text-gray-400 max-w-3xl">
+              InfoShield is built by a student at Baulkham Hills High School who has noticed how much harm fake news and misinformation can cause.
+              This project is meant to help raise awareness and give people tools to spot misleading content.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
