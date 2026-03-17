@@ -56,7 +56,7 @@ export default function PoliticalBiasSlider() {
         Political Lean & Misinformation Risk
       </h3>
       <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-        Based on studies of US and global social media behaviour. Risk reflects likelihood of sharing misinformation — not intelligence or morality. Strong partisans on <em>both ends</em> are more susceptible than moderates.
+        Based on studies of US and global social media behaviour. Risk reflects likelihood of sharing misinformation, not intelligence or morality. Strong partisans on <em>both ends</em> are more susceptible than moderates.
       </p>
 
       {/* Bar chart */}
