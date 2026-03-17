@@ -153,7 +153,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.5 }}
                 className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mt-8 mb-10 leading-relaxed"
               >
-                Fake news spreads <strong className="text-white">10× faster</strong> than real news. Learn to spot misinformation, explore the data, and protect your community.
+                False news on social media can reach people about <strong className="text-white">16× faster</strong> than true stories, so learning how to question posts and headlines really matters.
               </motion.p>
 
               <motion.div
@@ -185,7 +185,7 @@ export default function HeroSection() {
               >
                 {[
                   { stat: "76%", label: "of Australians exposed to fake news" },
-                  { stat: "10×", label: "faster spread than real news" },
+                  { stat: "6×", label: "faster spread than real news" },
                   { stat: "65%", label: "can't spot misinformation" },
                 ].map((item, i) => (
                   <div

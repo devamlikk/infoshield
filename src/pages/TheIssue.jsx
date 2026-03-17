@@ -24,7 +24,7 @@ export default function TheIssue() {
               <span className="block text-5xl sm:text-6xl lg:text-7xl text-orange-400 italic">Epidemic.</span>
             </h1>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
-              Fake news isn't just annoying — it's a public health, political, and social crisis affecting millions of Australians every day.
+              Fake news isn't just annoying; it's a public health, political, and social crisis affecting millions of Australians every day.
             </p>
           </motion.div>
         </div>
@@ -42,8 +42,8 @@ export default function TheIssue() {
           <div className="grid md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
               { stat: "76%", label: "of Australians were exposed to misinformation online in 2023", source: "ACMA" },
-              { stat: "42%", label: "of people globally trust most news most of the time", source: "Reuters Institute" },
-              { stat: "6×", label: "faster — false info spreads vs. accurate info on social media", source: "MIT Study" },
+              { stat: "97%", label: "of Australian adults have limited skills to verify information online", source: "RMIT–RMIT FactLab / The Conversation" },
+              { stat: "6×", label: "false news can spread up to six times faster than true stories on social media", source: "MIT Study on Misinformation" },
             ].map((item, i) => (
               <div key={i} className="bg-[#0F172A] hover:bg-white/5 transition-colors p-8 text-center">
                 <p className="font-heading font-black text-5xl text-orange-400 mb-3">{item.stat}</p>
@@ -54,7 +54,7 @@ export default function TheIssue() {
           </div>
           <div className="mt-8 p-8 rounded-2xl border border-white/10 bg-white/5">
             <p className="text-gray-300 leading-relaxed">
-              Misinformation — false or misleading information shared regardless of intent — has exploded in the digital age. According to <strong className="text-white">ACMA</strong>, health, politics, and climate are the most common topics. Social media algorithms designed to maximise engagement amplify emotionally charged, sensational content — which is often false. The <strong className="text-white">Reuters Institute Digital News Report</strong> reveals that trust in news is at a historic low globally, leaving people vulnerable to unverified alternative sources.
+              Misinformation (false or misleading information shared regardless of intent) has exploded in the digital age. According to ACMA, health, politics, and climate are among the most common targets. Social media algorithms designed to maximise engagement amplify emotionally charged, sensational content, which is often false. The Reuters Institute Digital News Report shows trust in news is at historic lows globally, leaving people more vulnerable to unverified alternative sources. The COVID-19 pandemic highlighted the real-world consequences of misinformation, with false health claims leading to vaccine hesitancy and dangerous behaviours. As AI-generated content becomes more sophisticated, the challenge of discerning truth from fiction will only grow. Understanding the scale and impact of this epidemic is crucial for developing effective strategies to combat it.
             </p>
           </div>
         </motion.div>
@@ -97,12 +97,6 @@ export default function TheIssue() {
               </div>
             ))}
           </div>
-        </motion.div>
-
-        {/* Infographic placeholder */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-20 border-2 border-dashed border-white/20 rounded-2xl p-12 text-center">
-          <p className="text-white/40 text-sm font-medium">📊 Canva Infographic Embed</p>
-          <p className="text-white/25 text-xs mt-2">Replace with your Canva embed code</p>
         </motion.div>
 
         <div className="flex justify-center">

@@ -13,11 +13,11 @@ export default function VideoSection() {
         >
           <span className="text-orange-400 font-heading font-semibold text-sm uppercase tracking-widest">Watch & Learn</span>
           <h2 className="font-heading font-black text-4xl sm:text-5xl text-white mt-3">
-            How misinformation
-            <span className="text-orange-400 italic"> spreads.</span>
+            What our society
+            <span className="text-orange-400 italic"> says.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-            This short video explains how fake news exploits our emotions and algorithms to go viral.
+            We interviewed a few members of our society and asked them questions relating to their experience with misinformation.
           </p>
         </motion.div>
         <motion.div
