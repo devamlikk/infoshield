@@ -169,6 +169,14 @@ export default function HeroSection() {
                   Take the Quiz
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
+
+                <Link
+                  to={createPageUrl("Community")}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-heading font-bold text-base border border-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                >
+                  Vote In Our Poll
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
                 <Link
                   to={createPageUrl("TheIssue")}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-heading font-bold text-base border border-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-105"
