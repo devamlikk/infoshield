@@ -1,98 +1,113 @@
 const quizQuestions = [
   {
-    question: "A friend shares a shocking news headline on social media. What should you do first?",
+    question: "A news article cites '5 experts agree' but doesn't name them. What is this an example of?",
     options: [
-      "Share it immediately so others are warned",
-      "Check the source and look for the story on trusted news sites",
-      "Assume it's true because your friend shared it",
-      "Ignore it completely"
+      "Solid evidence-based reporting",
+      "Vague authority — a common misinformation tactic",
+      "Anonymous sourcing, which is standard journalism practice",
+      "Peer-reviewed research methodology"
     ],
     correct: 1,
-    explanation: "Always verify information by checking trusted news sources before sharing. Even well-meaning friends can unknowingly spread misinformation."
+    explanation: "Unnamed or vague expert citations are a red flag. Credible journalism names its sources so readers can verify their credentials independently."
   },
   {
-    question: "Which of the following is a common sign of a fake news article?",
+    question: "A viral post claims a politician 'admitted' something, linking to a 4-year-old article. What should concern you most?",
     options: [
-      "It includes quotes from named experts",
-      "It uses emotional language and ALL CAPS in the headline",
-      "It links to peer-reviewed studies",
-      "It was published by a well-known news outlet"
+      "The article is from a mainstream outlet so it must be fine",
+      "The post uses the word 'admitted' which is loaded language",
+      "The date — old stories are frequently reshared out of context to mislead",
+      "Politicians always lie so it's probably true anyway"
     ],
-    correct: 1,
-    explanation: "Fake news often uses sensational, emotional language and ALL CAPS to grab attention and trigger an emotional response rather than inform."
-  },
-  {
-    question: "According to ACMA, what percentage of Australian adults encountered misinformation online in 2023?",
-    options: ["About 25%", "About 50%", "About 76%", "About 95%"],
     correct: 2,
-    explanation: "ACMA reported that approximately 76% of Australian adults were exposed to misinformation online in 2023 — highlighting how widespread the problem is."
+    explanation: "Recycled old stories are one of the most common misinformation tactics. Always check the date and whether the story is still relevant to current events."
   },
   {
-    question: "What makes social media algorithms contribute to the spread of misinformation?",
+    question: "Which of these headlines is most likely to be misleading?",
     options: [
-      "They prioritise accurate, verified content",
-      "They are designed to maximise engagement, often amplifying sensational content",
-      "They automatically fact-check all posts",
-      "They only show content from verified journalists"
+      "'New study links processed food to higher cancer risk in some populations'",
+      "'Scientists say THIS common food is literally killing you'",
+      "'Researchers find moderate correlation between diet and health outcomes'",
+      "'Health study results vary across different demographic groups'"
     ],
     correct: 1,
-    explanation: "Social media algorithms are designed to maximise user engagement. Sensational and emotionally charged content (often false) generates more clicks and shares."
+    explanation: "Words like 'literally', 'THIS', and absolute claims are hallmarks of sensationalist misinformation. Credible reporting uses measured, specific language."
   },
   {
-    question: "How much faster does false information spread compared to true information on Twitter, according to MIT research?",
-    options: ["2 times faster", "4 times faster", "6 times faster", "10 times faster"],
+    question: "You read an article that perfectly confirms your existing political beliefs. What should you do?",
+    options: [
+      "Share it immediately — it confirms what you already know is true",
+      "Be more skeptical than usual — confirmation bias makes us less critical of agreeable content",
+      "Trust it more because it aligns with your lived experience",
+      "Only share it if your friends agree with you too"
+    ],
+    correct: 1,
+    explanation: "Confirmation bias is one of the primary psychological mechanisms misinformation exploits. Content that feels satisfying to believe deserves extra scrutiny, not less."
+  },
+  {
+    question: "A fact-checking site rates a claim as 'Mostly False'. What does this most likely mean?",
+    options: [
+      "The entire claim is fabricated",
+      "The fact-checker has a political bias against the claim",
+      "The claim contains a kernel of truth but is framed in a significantly misleading way",
+      "The claim hasn't been fully investigated yet"
+    ],
     correct: 2,
-    explanation: "MIT researchers found that false news stories spread approximately 6 times faster than true stories on Twitter, reaching more people more quickly."
+    explanation: "Most misinformation isn't completely fabricated — it distorts, exaggerates, or decontextualises real facts. 'Mostly False' typically means the framing is deeply misleading even if some element is accurate."
   },
   {
-    question: "Which of these is a reliable fact-checking website?",
-    options: ["TruthOrFake.com.au", "RMIT ABC Fact Check", "DefinitelyRealNews.org", "ShareBeforeReading.net"],
-    correct: 1,
-    explanation: "RMIT ABC Fact Check is a legitimate Australian fact-checking service that verifies claims made by public figures and viral content."
-  },
-  {
-    question: "What is 'deepfake' technology?",
+    question: "Which of the following is the strongest indicator that a website is a reliable news source?",
     options: [
-      "A new social media platform",
-      "AI technology that creates realistic but fake video/audio of real people",
-      "A type of computer virus",
-      "A fact-checking algorithm"
+      "It has a professional-looking design and logo",
+      "It has a large social media following",
+      "It has a transparent editorial policy, named journalists, and correction history",
+      "It has been around for more than 10 years"
+    ],
+    correct: 2,
+    explanation: "Transparency is the hallmark of credible journalism — named authors, clear editorial standards, and a willingness to publicly correct errors. Design and age alone mean nothing."
+  },
+  {
+    question: "A photo circulates showing a large protest crowd, claimed to be from yesterday. How would you verify it?",
+    options: [
+      "Check how many likes and shares it has",
+      "Use reverse image search to check if the photo predates the claimed event",
+      "See if the people in the crowd look like they're from that country",
+      "Check if a celebrity has shared it"
     ],
     correct: 1,
-    explanation: "Deepfakes use AI to create convincing fake videos and audio of real people, making it increasingly difficult to distinguish real content from fabricated content."
+    explanation: "Reverse image search (Google Images or TinEye) can reveal if a photo has been used in older, unrelated contexts — one of the most common misinformation tactics is recycling old images."
   },
   {
-    question: "What should you consider about the 'source' when evaluating a news article?",
+    question: "What is a 'filter bubble' and why is it dangerous?",
     options: [
-      "Only whether it looks professional",
-      "The publication's reputation, author credentials, and whether other outlets report the same story",
-      "How many social media shares it has",
-      "Whether the headline is interesting"
+      "A cybersecurity threat that filters malware from your browser",
+      "When algorithms show you only content that reinforces your existing views, limiting exposure to opposing perspectives",
+      "A feature that blocks misinformation on social media platforms",
+      "When you only follow verified accounts on social media"
     ],
     correct: 1,
-    explanation: "Evaluating a source means checking the publication's track record, the author's credentials, and whether other reputable outlets are reporting the same information."
+    explanation: "Filter bubbles created by recommendation algorithms mean you increasingly only see content that confirms your worldview, making you more vulnerable to misinformation within that bubble."
   },
   {
-    question: "Why is health misinformation particularly dangerous?",
+    question: "A friend shares a health remedy claiming doctors 'don't want you to know' about it. This phrase is a sign of what?",
     options: [
-      "It's not really dangerous — people know to check with doctors",
-      "It can lead people to avoid proven treatments or take harmful ones",
-      "It only affects elderly people",
-      "Doctors always correct it quickly"
+      "A legitimate suppressed medical discovery",
+      "Conspiracy framing designed to make you distrust expert consensus",
+      "Investigative journalism exposing corruption",
+      "A peer-reviewed alternative medicine finding"
     ],
     correct: 1,
-    explanation: "Health misinformation can lead people to reject vaccines, avoid medical treatment, or try unproven remedies — putting lives at risk, as seen during the COVID-19 pandemic."
+    explanation: "'They don't want you to know' is a classic conspiracy framing technique that pre-emptively discredits expert rebuttals, making the claim harder to disprove in the reader's mind."
   },
   {
-    question: "What is the best way to combat misinformation in your community?",
+    question: "Which scenario best demonstrates 'malinformation'?",
     options: [
-      "Delete all social media accounts",
-      "Only share content from verified sources and encourage others to fact-check",
-      "Argue with everyone who shares fake news",
-      "Assume everything online is false"
+      "A completely fabricated news story about a politician",
+      "A satire article mistaken for real news",
+      "A real, accurate photo of a politician shared with false context to damage their reputation",
+      "An outdated statistic presented as current data"
     ],
-    correct: 1,
-    explanation: "The most effective approach is to model good information habits: verify before sharing, use fact-checking resources, and have respectful conversations about media literacy."
+    correct: 2,
+    explanation: "Malinformation is real information used with malicious intent to cause harm. Unlike misinformation (false) or disinformation (deliberately false), malinformation is factually accurate but weaponised out of context."
   }
 ];
 
