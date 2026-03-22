@@ -1,46 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "@/utils";
-import { ArrowRight } from "lucide-react";
-import HeroSection from "@/components/home/HeroSection";
-import StatsStrip from "@/components/home/StatsStrip";
-import WhyItMatters from "@/components/home/WhyItMatters";
-import VideoSection from "@/components/home/VideoSection";
-import SocialShareButtons from "@/components/shared/SocialShareButtons";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './Layout.jsx';
+import Home from './pages/Home.jsx';
+import TheIssue from './pages/TheIssue.jsx';
+import Quiz from './pages/Quiz.jsx';
+import HowToHelp from './pages/HowToHelp.jsx';
+import Contact from './pages/Contact.jsx';
 
-export default function Home() {
+function App() {
   return (
-    <div className="bg-[#0F172A]">
-      <HeroSection />
-      <StatsStrip />
-      <WhyItMatters />
-      <VideoSection />
-      <section className="py-28 px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="font-heading font-black text-4xl sm:text-5xl text-white mb-4">
-          Help spread
-          <span className="text-orange-400 italic"> the truth.</span>
-        </h2>
-        <p className="text-gray-400 mb-10 max-w-xl mx-auto">
-          Share InfoShield with friends and family. Together, we can build a more informed community.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
-          <Link
-            to={createPageUrl("Quiz")}
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-orange-500 hover:bg-orange-400 text-white font-heading font-bold transition-all shadow-2xl shadow-orange-500/30 hover:scale-105"
-          >
-            Take the Quiz <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            to={createPageUrl("Community")}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-heading font-bold border border-white/30 backdrop-blur-sm transition-all hover:scale-105"
-          >
-            Vote in our Poll
-          </Link>
-        </div>
-        <div className="flex justify-center">
-          <SocialShareButtons title="InfoShield — Learn to spot fake news and misinformation" />
-        </div>
-      </section>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout currentPageName="Home"><Home /></Layout>} />
+        <Route path="/TheIssue" element={<Layout currentPageName="TheIssue"><TheIssue /></Layout>} />
+        <Route path="/Quiz" element={<Layout currentPageName="Quiz"><Quiz /></Layout>} />
+        <Route path="/HowToHelp" element={<Layout currentPageName="HowToHelp"><HowToHelp /></Layout>} />
+        <Route path="/Contact" element={<Layout currentPageName="Contact"><Contact /></Layout>} />
+        <Route path="*" element={
+          <div className="min-h-screen flex items-center justify-center bg-[#0F172A]">
+            <div className="text-center">
+              <h1 className="text-7xl font-light text-slate-600">404</h1>
+              <h2 className="text-2xl font-medium text-white mt-4">Page Not Found</h2>
+              <button onClick={() => window.location.href = '/'} className="mt-6 px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-400 transition-colors">
+                Go Home
+              </button>
+            </div>
+          </div>
+        } />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;
