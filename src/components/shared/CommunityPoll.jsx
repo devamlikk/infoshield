@@ -11,6 +11,8 @@ const POLL_OPTIONS = [
   "AI-generated deepfakes and fake images",
 ];
 
+const STORAGE_KEY = "infoshield_poll_voted";
+
 export default function CommunityPoll() {
   const [selected, setSelected] = useState(null);
   const [submitted, setSubmitted] = useState(false);
@@ -19,6 +21,11 @@ export default function CommunityPoll() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const alreadyVoted = localStorage.getItem(STORAGE_KEY);
+    if (alreadyVoted) {
+      setSelected(alreadyVoted);
+      setSubmitted(true);
+    }
     fetchVotes();
   }, []);
 
@@ -49,6 +56,7 @@ export default function CommunityPoll() {
       .insert([{ response_option: selected }]);
 
     if (!error) {
+      localStorage.setItem(STORAGE_KEY, selected);
       setSubmitted(true);
       fetchVotes();
     }
@@ -111,11 +119,13 @@ export default function CommunityPoll() {
             key="results"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="space-y-3"
+            className="space-y-4"
           >
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle className="w-5 h-5 text-green-400" />
-              <span className="text-green-400 text-sm font-semibold">Thanks for voting!</span>
+              <span className="text-green-400 text-sm font-semibold">
+                {localStorage.getItem(STORAGE_KEY) && !loading ? "You already voted on this device" : "Thanks for voting!"}
+              </span>
             </div>
             {loading ? (
               <p className="text-gray-400 text-sm">Loading results...</p>
@@ -123,20 +133,23 @@ export default function CommunityPoll() {
               POLL_OPTIONS.map((option, i) => {
                 const count = votes[option] || 0;
                 const pct = totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
+                const isMyVote = selected === option;
                 return (
                   <div key={i} className="space-y-1">
                     <div className="flex justify-between text-sm">
-                      <span className={`${selected === option ? "text-orange-400 font-semibold" : "text-gray-300"}`}>
-                        {option}
+                      <span className={`${isMyVote ? "text-orange-400 font-semibold" : "text-gray-300"}`}>
+                        {option} {isMyVote && "✓"}
                       </span>
-                      <span className="text-gray-400">{pct}%</span>
+                      <span className={`font-semibold ${isMyVote ? "text-orange-400" : "text-gray-400"}`}>
+                        {pct}% ({count})
+                      </span>
                     </div>
-                    <div className="w-full bg-white/10 rounded-full h-2">
+                    <div className="w-full bg-white/10 rounded-full h-2.5">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        className={`h-2 rounded-full ${selected === option ? "bg-orange-500" : "bg-white/30"}`}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}
+                        className={`h-2.5 rounded-full ${isMyVote ? "bg-orange-500" : "bg-white/30"}`}
                       />
                     </div>
                   </div>

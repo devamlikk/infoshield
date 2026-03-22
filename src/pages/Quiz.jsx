@@ -5,7 +5,11 @@ import quizQuestions from "@/components/quiz/QuizData";
 import QuizQuestion from "@/components/quiz/QuizQuestion";
 import QuizResults from "@/components/quiz/QuizResults";
 
+const STORAGE_KEY = "infoshield_quiz_taken";
+
 export default function Quiz() {
+  const alreadyTaken = localStorage.getItem(STORAGE_KEY);
+
   const [started, setStarted] = useState(false);
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -32,14 +36,44 @@ export default function Quiz() {
     }
   };
 
-  const handleRestart = () => {
-    setStarted(false); setCurrentQ(0); setSelectedAnswer(null);
-    setShowResult(false); setScore(0); setAnswers([]); setFinished(false);
-  };
+  // If already taken, show results screen directly
+  if (alreadyTaken) {
+    return (
+      <div className="bg-[#0F172A] min-h-screen">
+        <section className="relative overflow-hidden pt-32 pb-20 flex items-center min-h-[50vh]">
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80")` }} />
+          <div className="absolute inset-0 bg-[#0F172A]/80" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0F172A] to-transparent" />
+          <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <p className="text-orange-400 font-heading font-semibold text-sm uppercase tracking-[0.2em] mb-4">Interactive Quiz</p>
+              <h1 className="font-heading font-black text-white leading-[1.0]">
+                <span className="block text-5xl sm:text-6xl">Can you spot</span>
+                <span className="block text-5xl sm:text-6xl text-orange-400 italic">fake news?</span>
+              </h1>
+            </motion.div>
+          </div>
+        </section>
+        <section className="pb-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white/5 rounded-2xl p-8 sm:p-12 border border-white/10 text-center"
+          >
+            <div className="w-20 h-20 rounded-full bg-orange-500/20 flex items-center justify-center mx-auto mb-6">
+              <Brain className="w-10 h-10 text-orange-500" />
+            </div>
+            <h2 className="font-heading font-bold text-2xl text-white mb-3">You have already completed this quiz</h2>
+            <p className="text-gray-400 mb-4">Only one response per device is allowed to keep our community stats accurate.</p>
+            <QuizResults score={0} total={quizQuestions.length} alreadyTaken={true} />
+          </motion.div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#0F172A] min-h-screen">
-      {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-20 flex items-center min-h-[50vh]">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80")` }} />
         <div className="absolute inset-0 bg-[#0F172A]/80" />
@@ -56,7 +90,6 @@ export default function Quiz() {
         </div>
       </section>
 
-      {/* Quiz Area */}
       <section className="pb-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
         <AnimatePresence mode="wait">
           {!started ? (
@@ -69,7 +102,8 @@ export default function Quiz() {
                 <Brain className="w-10 h-10 text-white" />
               </div>
               <h2 className="font-heading font-bold text-2xl text-white mb-3">Ready to test your knowledge?</h2>
-              <p className="text-gray-400 mb-8 max-w-md mx-auto">10 questions about misinformation, fake news, and media literacy.</p>
+              <p className="text-gray-400 mb-2 max-w-md mx-auto">10 questions about misinformation, fake news, and media literacy.</p>
+              <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">Note: only one attempt per device is allowed.</p>
               <button
                 onClick={() => setStarted(true)}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-orange-500 hover:bg-orange-400 text-white font-heading font-bold transition-all shadow-xl shadow-orange-500/25 hover:scale-105"
@@ -78,7 +112,7 @@ export default function Quiz() {
               </button>
             </motion.div>
           ) : finished ? (
-            <QuizResults key="results" score={score} total={quizQuestions.length} onRestart={handleRestart} />
+            <QuizResults key="results" score={score} total={quizQuestions.length} />
           ) : (
             <div key="question">
               <QuizQuestion
