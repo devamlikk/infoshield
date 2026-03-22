@@ -125,11 +125,6 @@ export default function HowToHelp() {
           </div>
         </motion.div>
 
-        {/* Poll */}
-        <div className="mb-20">
-          <CommunityPoll />
-        </div>
-
         {/* Community Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

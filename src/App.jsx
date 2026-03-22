@@ -6,6 +6,7 @@ import TheIssue from './pages/TheIssue.jsx';
 import Quiz from './pages/Quiz.jsx';
 import HowToHelp from './pages/HowToHelp.jsx';
 import Contact from './pages/Contact.jsx';
+import Community from './pages/Community.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/TheIssue" element={<Layout currentPageName="TheIssue"><TheIssue /></Layout>} />
         <Route path="/Quiz" element={<Layout currentPageName="Quiz"><Quiz /></Layout>} />
         <Route path="/HowToHelp" element={<Layout currentPageName="HowToHelp"><HowToHelp /></Layout>} />
+        <Route path="/Community" element={<Layout currentPageName="Community"><Community /></Layout>} />
         <Route path="/Contact" element={<Layout currentPageName="Contact"><Contact /></Layout>} />
         <Route path="*" element={
           <div className="min-h-screen flex items-center justify-center bg-[#0F172A]">

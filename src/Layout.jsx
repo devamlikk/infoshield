@@ -9,6 +9,7 @@ const navLinks = [
   { name: "The Issue", page: "TheIssue" },
   { name: "Quiz", page: "Quiz" },
   { name: "How to Help", page: "HowToHelp" },
+  { name: "Community", page: "Community" },
   { name: "Contact", page: "Contact" },
 ];
 
