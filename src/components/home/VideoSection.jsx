@@ -17,7 +17,7 @@ export default function VideoSection() {
             <span className="text-orange-400 italic"> says.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-            We interviewed a few members of our society and asked them questions relating to their experience with misinformation.
+            Here is a video by The Open University that talks about why people believe misinformation. 
           </p>
         </motion.div>
         <motion.div
@@ -29,7 +29,7 @@ export default function VideoSection() {
           <div className="aspect-video">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/AkwWcHekMdo"
+              src="https://www.youtube.com/watch?v=_7otmig_7Co"
               title="How Fake News Spreads"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
