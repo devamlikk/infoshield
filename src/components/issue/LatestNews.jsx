@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Newspaper, RefreshCw } from "lucide-react";
 
-const API_KEY = "001738cdb23c4d83af8d6cf1bef206b7";
+const API_KEY = "d9b29fe52658210da1c09d35054e225a";
 
 export default function LatestNews() {
   const [articles, setArticles] = useState([]);
@@ -18,11 +18,11 @@ export default function LatestNews() {
     setError(false);
     try {
       const res = await fetch(
-        `https://newsapi.org/v2/everything?q=misinformation+australia&language=en&sortBy=publishedAt&pageSize=6&apiKey=${API_KEY}`
+        `https://gnews.io/api/v4/search?q=misinformation+australia&lang=en&max=6&apikey=${API_KEY}`
       );
       const data = await res.json();
-      if (data.articles) {
-        setArticles(data.articles.filter(a => a.title !== "[Removed]"));
+      if (data.articles && data.articles.length > 0) {
+        setArticles(data.articles);
       } else {
         setError(true);
       }
@@ -53,7 +53,7 @@ export default function LatestNews() {
           <h3 className="font-heading font-bold text-xl text-white">
             Latest Misinformation News
           </h3>
-          <p className="text-gray-400 text-sm mt-1">Real-time articles via NewsAPI</p>
+          <p className="text-gray-400 text-sm mt-1">Real-time articles via GNews API</p>
         </div>
         <button
           onClick={fetchNews}
@@ -114,7 +114,7 @@ export default function LatestNews() {
       )}
 
       <p className="text-gray-600 text-xs mt-6">
-        Powered by NewsAPI.org — updates in real time
+        Powered by GNews.io — updates in real time
       </p>
     </div>
   );
