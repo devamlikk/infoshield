@@ -130,7 +130,7 @@ export default function HeroSection() {
             {/* Hero text */}
             <motion.div
               style={{ opacity }}
-              className="relative z-20 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32"
+              className="relative z-20 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32"
             >
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
