@@ -130,7 +130,7 @@ export default function HeroSection() {
             {/* Hero text */}
             <motion.div
               style={{ opacity }}
-              className="relative z-20 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-40 lg:pt-44 pb-32"
+              className="relative z-20 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-24"
             >
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -142,9 +142,9 @@ export default function HeroSection() {
               </motion.p>
 
               <h1 className="font-heading font-black text-white leading-[1.0] mb-4">
-                <span className="block text-5xl sm:text-7xl lg:text-8xl">Don't believe</span>
-                <span className="block text-5xl sm:text-7xl lg:text-8xl text-orange-400 italic">everything</span>
-                <span className="block text-5xl sm:text-7xl lg:text-8xl">you read.</span>
+                <span className="block text-4xl sm:text-6xl lg:text-7xl">Don't believe</span>
+                <span className="block text-4xl sm:text-6xl lg:text-7xl text-orange-400 italic">everything</span>
+                <span className="block text-4xl sm:text-6xl lg:text-7xl">you read.</span>
               </h1>
 
               <motion.p

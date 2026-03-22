@@ -29,7 +29,7 @@ export default function VideoSection() {
           <div className="aspect-video">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/watch?v=_7otmig_7Co"
+              src="https://www.youtube.com/embed/_7otmig_7Co"
               title="How Fake News Spreads"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
