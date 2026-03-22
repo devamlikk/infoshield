@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Search, BookOpen, Users, MessageCircle, CheckCircle, ExternalLink } from "lucide-react";
 import ResourceCard from "@/components/help/ResourceCard";
 import SocialShareButtons from "@/components/shared/SocialShareButtons";
+import CommunityPoll from "@/components/shared/CommunityPoll";
 
 const resources = [
   {
@@ -123,6 +124,11 @@ export default function HowToHelp() {
             ))}
           </div>
         </motion.div>
+
+        {/* Poll */}
+        <div className="mb-20">
+          <CommunityPoll />
+        </div>
 
         {/* Community Section */}
         <motion.div
