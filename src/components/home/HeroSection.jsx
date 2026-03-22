@@ -178,10 +178,10 @@ export default function HeroSection() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="flex flex-wrap justify-center gap-4 mt-16"
+                 initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="hidden sm:flex flex-wrap justify-center gap-4 mt-16"
               >
                 {[
                   { stat: "76%", label: "of Australians exposed to fake news" },
