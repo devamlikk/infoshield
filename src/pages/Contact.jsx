@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { supabase } from "@/supabaseClient";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -14,21 +15,27 @@ export default function Contact() {
     e.preventDefault();
     setStatus("loading");
 
+    // Save to Supabase
+    const { error } = await supabase
+      .from("contact_submissions")
+      .insert([{ name: form.name, email: form.email, message: form.message }]);
+
+    console.log("Supabase error:", error);
+
+    // Also send via Formspree as backup
     try {
-      const res = await fetch("https://formspree.io/f/mgonnjrw", {
+      await fetch("https://formspree.io/f/mgonnjrw", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(form),
       });
+    } catch {}
 
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
+    if (error) {
       setStatus("error");
+    } else {
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
     }
   };
 
@@ -49,14 +56,6 @@ export default function Contact() {
           <p className="text-gray-400 text-lg">
             Have a question, suggestion, or want to report misinformation? We'd love to hear from you.
           </p>
-
-          <div className="mt-10 text-left">
-            <h2 className="text-orange-500 font-heading font-bold text-2xl mb-2">About Us</h2>
-            <p className="text-gray-400 max-w-3xl">
-              InfoShield is built by a student at Baulkham Hills High School who has noticed how much harm fake news and misinformation can cause.
-              This project is meant to help raise awareness and give people tools to spot misleading content.
-            </p>
-          </div>
         </motion.div>
 
         <motion.div
@@ -95,7 +94,6 @@ export default function Contact() {
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                 />
               </div>
-
               <div>
                 <label className="block text-gray-300 text-sm font-semibold mb-2">Email</label>
                 <input
@@ -108,7 +106,6 @@ export default function Contact() {
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                 />
               </div>
-
               <div>
                 <label className="block text-gray-300 text-sm font-semibold mb-2">Message</label>
                 <textarea
@@ -121,24 +118,18 @@ export default function Contact() {
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors resize-none"
                 />
               </div>
-
               {status === "error" && (
                 <div className="flex items-center gap-2 text-red-400 text-sm">
                   <AlertCircle className="w-4 h-4" />
                   Something went wrong. Please try again.
                 </div>
               )}
-
               <button
                 type="submit"
                 disabled={status === "loading"}
                 className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-orange-500 hover:bg-orange-400 disabled:opacity-50 disabled:cursor-not-allowed text-white font-heading font-bold text-base transition-all duration-300 shadow-2xl shadow-orange-500/40 hover:scale-105"
               >
-                {status === "loading" ? (
-                  "Sending..."
-                ) : (
-                  <>Send Message <Send className="w-4 h-4" /></>
-                )}
+                {status === "loading" ? "Sending..." : <><Send className="w-4 h-4" /> Send Message</>}
               </button>
             </form>
           )}
