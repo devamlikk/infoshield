@@ -40,7 +40,7 @@ const POSITIONS = [
     riskLevel: 5,
     color: "bg-red-600",
     textColor: "text-red-400",
-    description: "Multiple studies — primarily of US social media — find the strongest concentration of misinformation sharing among far-right partisans, driven by partisan media ecosystems and distrust of mainstream sources.",
+    description: "Multiple studies, primarily of US social media, find the strongest concentration of misinformation sharing among far-right partisans, driven by partisan media ecosystems and distrust of mainstream sources.",
   },
 ];
 

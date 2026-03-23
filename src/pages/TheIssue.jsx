@@ -110,7 +110,7 @@ export default function TheIssue() {
         </motion.div>
 
         <div className="flex justify-center">
-          <SocialShareButtons title="The Misinformation Epidemic — InfoShield Data Analysis" />
+          <SocialShareButtons title="The Misinformation Epidemic: InfoShield Data Analysis" />
         </div>
       </section>
     </div>
