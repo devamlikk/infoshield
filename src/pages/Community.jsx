@@ -68,11 +68,11 @@ export default function Community() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <p className="text-orange-400 font-heading font-semibold text-sm uppercase tracking-[0.2em] mb-4">Community Hub</p>
             <h1 className="font-heading font-black text-white leading-[1.0]">
-              <span className="block text-5xl sm:text-6xl lg:text-7xl">What Australia</span>
+              <span className="block text-5xl sm:text-6xl lg:text-7xl">What the Community</span>
               <span className="block text-5xl sm:text-6xl lg:text-7xl text-orange-400 italic">thinks.</span>
             </h1>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
-              Real responses from real Australians. See how your community thinks about misinformation.
+              Real responses from real people. See how your community thinks about misinformation.
             </p>
           </motion.div>
         </div>
@@ -145,7 +145,7 @@ export default function Community() {
             ) : quizStats && quizStats.total > 0 ? (
               <>
                 <p className="text-gray-400 text-sm mb-6">
-                  Based on <span className="text-white font-semibold">{quizStats.total}</span> responses — community average is <span className="text-orange-400 font-semibold">{quizStats.avg}%</span>
+                  Based on <span className="text-white font-semibold">{quizStats.total}</span> responses, the community average is <span className="text-orange-400 font-semibold">{quizStats.avg}%</span>
                 </p>
                 <div className="space-y-4">
                   {quizStats.buckets.map((bucket, i) => {
