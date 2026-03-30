@@ -5,10 +5,25 @@ import quizQuestions from "@/components/quiz/QuizData";
 import QuizQuestion from "@/components/quiz/QuizQuestion";
 import QuizResults from "@/components/quiz/QuizResults";
 
-const STORAGE_KEY = "infoshield_quiz_taken";
+const STORAGE_KEY = "infoshield_quiz_result";
 
 export default function Quiz() {
-  const alreadyTaken = localStorage.getItem(STORAGE_KEY);
+  const storedQuiz = (() => {
+    const item = localStorage.getItem(STORAGE_KEY);
+    if (!item) return null;
+
+    try {
+      const parsed = JSON.parse(item);
+      return parsed && parsed.taken ? parsed : null;
+    } catch (error) {
+      localStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
+  })();
+
+  const alreadyTaken = Boolean(storedQuiz);
+  const savedScore = storedQuiz?.score ?? 0;
+  const savedTotal = storedQuiz?.total ?? quizQuestions.length;
 
   const [started, setStarted] = useState(false);
   const [currentQ, setCurrentQ] = useState(0);
@@ -36,7 +51,7 @@ export default function Quiz() {
     }
   };
 
-  // If already taken, show results screen directly
+  // If already taken, show results screen directly with the saved score
   if (alreadyTaken) {
     return (
       <div className="bg-[#0F172A] min-h-screen">
@@ -65,7 +80,7 @@ export default function Quiz() {
             </div>
             <h2 className="font-heading font-bold text-2xl text-white mb-3">You have already completed this quiz</h2>
             <p className="text-gray-400 mb-4">Only one response per device is allowed to keep our community stats accurate.</p>
-            <QuizResults score={0} total={quizQuestions.length} alreadyTaken={true} />
+            <QuizResults score={savedScore} total={savedTotal} alreadyTaken={true} />
           </motion.div>
         </section>
       </div>

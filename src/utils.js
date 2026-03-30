@@ -6,5 +6,9 @@ export function cn(...inputs) {
 }
 
 export function createPageUrl(pageName) {
-  return '/' + pageName;
+  if (!pageName || pageName === "Home") {
+    return "/";
+  }
+
+  return `/${pageName}`;
 }

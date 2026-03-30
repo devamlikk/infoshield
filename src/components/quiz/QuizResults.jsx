@@ -6,13 +6,13 @@ import { Trophy, RotateCcw, ArrowRight, Target, TrendingUp, Users } from "lucide
 import SocialShareButtons from "@/components/shared/SocialShareButtons";
 import { supabase } from "@/supabaseClient";
 
-const STORAGE_KEY = "infoshield_quiz_taken";
+const STORAGE_KEY = "infoshield_quiz_result";
 
 export default function QuizResults({ score, total, onRestart }) {
   const percentage = Math.round((score / total) * 100);
   const [communityStats, setCommunityStats] = useState(null);
   const [loadingStats, setLoadingStats] = useState(true);
-  const alreadyTaken = localStorage.getItem(STORAGE_KEY);
+  const alreadyTaken = Boolean(localStorage.getItem(STORAGE_KEY));
 
   let message, color, emoji;
   if (percentage >= 80) { message = "Excellent! You're a misinformation detective!"; color = "text-green-400"; emoji = "🎉"; }
@@ -23,10 +23,12 @@ export default function QuizResults({ score, total, onRestart }) {
   useEffect(() => {
     const saveAndFetch = async () => {
       if (!alreadyTaken) {
+        const quizResult = { taken: true, score, total, percentage };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(quizResult));
+
         await supabase
           .from("quiz_results")
           .insert([{ score, total, percentage }]);
-        localStorage.setItem(STORAGE_KEY, "true");
       }
       fetchCommunityStats();
     };
